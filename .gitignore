@@ -1,0 +1,20 @@
+# IDE / editor
+.vscode/
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Build artifacts
+*.o
+*.so
+
+# Logs
+*.log
+
+# Large binary data files (phantoms & test data)
+# These are too large for GitHub (>100MB limit) and are not needed to compile.
+# They are test/example data — anyone cloning will need to obtain these separately.
+*.dat

@@ -1,0 +1,45 @@
+tvggpulibGD:
+	gcc -O3 -o tvggpulibGD.so -shared devel/tvggpulibGD.c -lGLEW -lglut -lCgGL -lpthread -fPIC
+tvgposgpulibGD:
+	gcc -O3 -o tvggpulibGD.so -shared devel/tvgposgpulibGD.c -lGLEW -lglut -lCgGL -lpthread -fPIC
+tpvgpulibGD:
+	gcc -O3 -o tpvggpulibGD.so -shared devel/tpvgpulibGD.c -lGLEW -lglut -lCgGL -lpthread -fPIC
+tpvposgpulibGD:
+	gcc -O3 -o tpvggpulibGD.so -shared devel/tpvposgpulibGD.c -lGLEW -lglut -lCgGL -lpthread -fPIC
+projdataread:
+	gcc -O3 -o projdataread.so -shared devel/projdataread.c -lpthread -fPIC
+totalvar:
+	/opt/anaconda2/bin/f2py -c totalvar.f -m totalvar
+tomo3Dfort:
+	/opt/anaconda2/bin/f2py -c tomo3DfortranAux.f -m tomo3Dfort
+ray_proj3D:
+	/opt/anaconda2/bin/f2py -c ray_proj3D.f -m ray_proj3D
+view_proj3D:
+	/opt/anaconda2/bin/f2py -c view_proj3D.f -m view_proj3D
+view_proj3D_tomo:
+	/opt/anaconda2/bin/f2py -c view_proj3D_tomo.f -m view_proj3D_tomo
+radon3D:
+	/opt/anaconda2/bin/f2py -c radon3D.f -m radon3D
+forts: totalvar tomo3Dfort ray_proj3D view_proj3D view_proj3D_tomo radon3D
+
+clean:
+	rm *.so *.pyc phantoms/*.pyc
+
+view_proj3D_nn:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o view_proj3D_nn.so -shared view_proj3D_nn_perview.cu
+view_proj3D_lin:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o view_proj3D_lin.so -shared view_proj3D_lin_perview.cu
+view_proj3D_weighted:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o view_proj3D_weighted.so -shared view_proj3D_weighted.cu
+view_proj3D_deriv:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o view_proj3D_deriv.so -shared view_proj3D_deriv.cu
+view_proj3D_tomo_CUDA:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o view_proj3D_tomo_CUDA.so -shared view_proj3D_tomo.cu
+imagenorms:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o imagenorms.so -shared imagenorms.cu
+tvprox:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o tvprox.so -shared tvprox.cu
+tvproxcp:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o tvproxcp.so -shared tvproxcp.cu
+gaussproj:
+	/usr/local/packages/cuda-7.5/bin/nvcc --use_fast_math --compiler-options '-O3 -lpthread -fpic' -o gaussproj.so -shared gaussianiid.cu

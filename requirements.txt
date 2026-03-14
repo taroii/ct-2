@@ -1,0 +1,7 @@
+numpy
+scipy
+matplotlib
+ipython
+meson
+meson-python
+ninja
