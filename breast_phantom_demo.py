@@ -369,6 +369,6 @@ if __name__ == '__main__':
             colors='#888888', labelsize=7)
 
     plt.tight_layout()
-    out_path = '/mnt/user-data/outputs/breast_phantom_projections.png'
+    out_path = 'breast_phantom_projections.png'
     plt.savefig(out_path, dpi=150, bbox_inches='tight', facecolor='#0d0d0d')
     print(f"Plot saved to {out_path}")
